@@ -1,3 +1,4 @@
+let _4Pausua = 0
 DFRobotMaqueenPlus.I2CInit()
 let _1Pausua = 1
 let _2Pausua = 0
@@ -16,9 +17,8 @@ basic.forever(function () {
                 DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 75)
             }
         }
-    }
-    if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 30) {
-    	
+        _3Pausua = 0
+        _4Pausua = 1
     }
 })
 basic.forever(function () {
@@ -45,5 +45,45 @@ basic.forever(function () {
         basic.pause(1500)
         _2Pausua = 0
         _3Pausua = 1
+    }
+})
+basic.forever(function () {
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.RED)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.GREEN)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.BLUE)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.YELLOW)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.PINK)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.CYAN)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.WHITH)
+    basic.pause(100)
+    DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
+    basic.pause(100)
+})
+basic.forever(function () {
+    if (_4Pausua == DFRobotMaqueenPlus.readPatrol(Patrol.L2)) {
+        DFRobotMaqueenPlus.mototStop(Motors.ALL)
+    }
+})
+basic.forever(function () {
+    if (_4Pausua == DFRobotMaqueenPlus.readPatrol(Patrol.R2)) {
+        DFRobotMaqueenPlus.mototStop(Motors.ALL)
     }
 })
