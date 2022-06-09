@@ -1,4 +1,3 @@
-let _4Pausua = 0
 DFRobotMaqueenPlus.I2CInit()
 let _1Pausua = 1
 let _2Pausua = 0
@@ -17,8 +16,9 @@ basic.forever(function () {
                 DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 75)
             }
         }
-        _3Pausua = 0
-        _4Pausua = 1
+    }
+    if (DFRobotMaqueenPlus.readPatrol(Patrol.R2) == 1 && DFRobotMaqueenPlus.readPatrol(Patrol.L2) == 1) {
+        DFRobotMaqueenPlus.mototStop(Motors.ALL)
     }
 })
 basic.forever(function () {
@@ -76,14 +76,4 @@ basic.forever(function () {
     basic.pause(100)
     DFRobotMaqueenPlus.setRGBLight(RGBLight.RGBA, Color.OFF)
     basic.pause(100)
-})
-basic.forever(function () {
-    if (_4Pausua == DFRobotMaqueenPlus.readPatrol(Patrol.L2)) {
-        DFRobotMaqueenPlus.mototStop(Motors.ALL)
-    }
-})
-basic.forever(function () {
-    if (_4Pausua == DFRobotMaqueenPlus.readPatrol(Patrol.R2)) {
-        DFRobotMaqueenPlus.mototStop(Motors.ALL)
-    }
 })
