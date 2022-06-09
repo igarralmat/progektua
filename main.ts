@@ -19,6 +19,13 @@ basic.forever(function () {
     }
     if (DFRobotMaqueenPlus.readPatrol(Patrol.R2) == 1 && DFRobotMaqueenPlus.readPatrol(Patrol.L2) == 1) {
         DFRobotMaqueenPlus.mototStop(Motors.ALL)
+        basic.pause(500)
+        DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 90)
+        DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CCW, 90)
+        basic.pause(2000)
+        DFRobotMaqueenPlus.mototStop(Motors.ALL)
+        basic.pause(500)
+        basic.showString("AGUR JAVI")
     }
 })
 basic.forever(function () {
@@ -42,7 +49,7 @@ basic.forever(function () {
         DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 70)
         basic.pause(600)
         DFRobotMaqueenPlus.mototStop(Motors.ALL)
-        basic.pause(1500)
+        basic.pause(500)
         _2Pausua = 0
         _3Pausua = 1
     }
